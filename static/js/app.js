@@ -24,11 +24,18 @@ function bt(data) {
 }
 function clickevent() {
     // define date from typed value
-    const inputDate = d3.select("#datetime").property("value")
+    const date = d3.select("#datetime").property("value")
+
+    // define filtered data
+    let filterdata = tableData
     
+    // create a filterfor inputDate
+    if (date) {filterdata = filterdata.filter(tablerow => tablerow.datetime === date)
 
+    }
+    bt(filterdata);
 
-
-} 
+}
+d3.select("#filter-btn").on("click", clickevent);
     //call data function     
     bt(tableData);
