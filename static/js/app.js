@@ -6,41 +6,29 @@ console.log(tableData);
 // select the table body
 let tbody = d3.select("tbody");
 // create function for the data table
-function buildTable(data) {
-    // Clear out any existing data
+function bt(data) {
+    //clear out existing table data
     tbody.html("");
-  
-    // Loop through each object in the data
-    data.forEach((dataRow) => {
-      // Append a row to the table body
-      let row = tbody.append("tr");
-  
-      // Loop through each field in the dataRow and add each value as a table cell (td)
-      Object.values(dataRow).forEach((val) => {
+
+    // Loop through data and console.log each report object  -  console.log(sighting));
+    data.forEach(dataRow => {
+        // append a row to the table body
+        let row = tbody.append("tr");
+        // Loop through each field in the dataRow and add each value as a table cell (td)
+        Object.values(dataRow).forEach((val) => {
         let cell = row.append("td");
           cell.text(val);
         }
-      );
-    });
-  }
-
-// create a clickhandler function
-function clickhandler() {
-
-  // Defining date from typed value
-  const date = d3.select("#datetime").property("value")
-
-  // Define fitered data 
-  let filterdata = tabledata
-
-  // create a filter function
-  if (date) {filterdata = filterdata.filter(tablerow => tablerow.datetime === date)
-
-  } 
-  buildTable(filterdata)
-
+    );
+  });
 }
-d3.selectAll("#filter-btn").on("click", clickhandler)
+function clickevent() {
+    // define date from typed value
+    const inputDate = d3.select("#datetime").property("value")
+    
 
-  // Call data function
-  buildTable(tabledata);
+
+
+} 
+    //call data function     
+    bt(tableData);
